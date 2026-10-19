@@ -1,0 +1,325 @@
+/* ==========================================================================
+   SISTEMA MUSICAL: Folha de Estilos Principal
+   Um único arquivo para TODAS as telas. Ele cresce a cada aula:
+   Aula 1: base, formulário, botões, login e menu
+   Aula 2: títulos, barra de título, cores dos botões, tabelas e filtros
+   Aula 3: formulário em grade, campo de foto e botão de músicas
+   Aula 4: url e textarea, campo "full", utilitários e celular
+   ========================================================================== */
+
+/* 1. VARIÁVEIS E RESET [AULA 1]
+   :root guarda as variáveis. Escrevemos o valor UMA vez e usamos
+   em todo lugar com var(--nome). Para mudar a identidade visual do
+   sistema, basta trocar as cores aqui. */
+:root {
+    --primary: #2c3e50;
+    /* azul bem escuro: títulos, cabeçalho da tabela */
+    --blue: #3498db;
+    /* azul: botão principal e editar */
+    --blue-dark: #2980b9;
+    /* azul escuro: hover */
+    --green: #27ae60;
+    /* verde: botão de músicas */
+    --red: #e74c3c;
+    /* vermelho: excluir e o de obrigatório */
+    --red-dark: #c0392b;
+    --bg: #f0f2f5;
+    /* fundo cinza claro da página */
+    --surface: #ffffff;
+    /* fundo dos cartões */
+    --border: #dde1e7;
+    /* cor das bordas */
+    --text: #2c3e50;
+    --text-muted: #6c757d;
+    /* texto cinza, menos importante */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .08);
+    /* sombra fraca */
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, .10);
+    /* sombra média */
+    --radius: 8px;
+    /* arredondamento dos cantos */
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset: zera as margens que o navegador coloca sozinho.
+   box-sizing: border-box faz a largura já incluir padding e borda. */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* A página inteira: fonte, fundo e cor do texto. */
+body {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    /* espaço entre as linhas do texto */
+    min-height: 100vh;
+    /* no mínimo a altura toda da tela */
+}
+
+/* 2. FORMULÁRIOS [AULA 1]
+   Base usada por TODAS as telas que têm <form>.
+   Todo formulário vira um cartão branco com sombra. */
+form {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+/* Espaço embaixo de cada grupo (rótulo + campo). */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* display: block coloca o rótulo numa linha só dele, em cima do campo. */
+label {
+    display: block;
+    margin-bottom: .4rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Os campos ocupam a largura toda e ganham borda fina.
+   textarea e select já ficam prontos para as próximas telas. */
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--font);
+    /* sem isso, campos usam outra fonte */
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .25s, box-shadow .25s;
+    /* muda suave */
+}
+
+/* focus: quando a pessoa clica no campo. A borda fica azul. */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+}
+
+/* 3. BOTÕES [AULA 1, cores novas nas aulas 2 e 3] */
+/* Seletor em grupo (vírgulas): TODOS os botões do sistema têm o
+   mesmo formato. Cada um ganha a sua cor mais abaixo. */
+.btn-primary,
+.btn-edit,
+.btn-delete,
+.btn-music,
+.btn-back,
+.btn-youtube {
+    display: inline-flex;
+    /* ícone e texto alinhados */
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    padding: .55rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: .875rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    /* mãozinha no mouse */
+    text-decoration: none;
+    /* links sem sublinhado */
+    white-space: nowrap;
+    /* texto não quebra linha */
+    transition: background-color .2s, transform .15s, box-shadow .2s;
+    line-height: 1.4;
+}
+
+/* Botão principal: azul. No hover escurece e sobe 1px. */
+.btn-primary {
+    padding: .65rem 1.4rem;
+    font-size: .95rem;
+    background: var(--blue);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Voltar e Sair: escuro. */
+.btn-back {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-back:hover {
+    background: #1a252f;
+}
+
+/* 5. TELA DE LOGIN [AULA 1]
+   O body do login vira flex para centralizar o cartão:
+   justify-content: horizontal, align-items: vertical. */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg);
+    padding: 1rem;
+}
+
+/* O cartão branco, com no máximo 400px de largura. */
+.login-card {
+    background: var(--surface);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* O form já é um cartão (seção 2). Dentro do login-card tiramos
+   o fundo e a sombra para não ficar "caixa dentro de caixa". */
+.login-card form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.login-header h1 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: .25rem;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: .9rem;
+}
+
+/* Seletor com espaço "que está dentro de". Só o botão do login ocupa a largura toda. */
+.login-card .btn-primary {
+    width: 100%;
+    margin-top: .25rem;
+}
+
+/* A caixinha com a dica das credenciais. */
+.login-hint {
+    margin-top: 1.25rem;
+    padding: .75rem 1rem;
+    background: var(--bg);
+    border-radius: 6px;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.login-hint code {
+    background: #e9ecef;
+    padding: .1rem .35rem;
+    border-radius: 3px;
+    font-size: .8rem;
+}
+
+/* 6. LAYOUT BASE [AULA 1]
+   O container de todas as telas, menos o login.
+   Largura máxima de 1200px. margin: 0 auto centraliza a caixa. */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+/* 7. MENU PRINCIPAL [AULA 1] */
+/* flex-end empurra o botão Sair para a direita. */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: .35rem;
+}
+
+.page-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* A grade dos cards. auto-fit: "coloque quantas colunas couberem, cada uma com no mínimo 240px".
+   No celular os cards descem sozinhos. */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.menu-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    transition: transform .2s, box-shadow .25s;
+    border: 1px solid var(--border);
+}
+
+/* Com o mouse em cima, o card sobe 4px e a sombra cresce. */
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .13);
+}
+
+/* display: block faz o link ocupar o card inteiro (tudo clicável). */
+.menu-card a {
+    display: block;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.menu-card-icon {
+    font-size: 2.2rem;
+    margin-bottom: .75rem;
+}
+
+.menu-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: .35rem;
+}
+
+.menu-card-desc {
+    font-size: .85rem;
+    color: var(--text-muted);
+}
