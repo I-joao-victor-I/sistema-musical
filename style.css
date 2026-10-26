@@ -323,3 +323,214 @@ select:focus {
     font-size: .85rem;
     color: var(--text-muted);
 }
+
+/* [AULA 2] Cores dos botões de ação da tabela.
+Azul = ação normal. Vermelho = perigo (excluir). */
+.btn-edit {
+    background: var(--blue);
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background: var(--blue-dark);
+}
+
+.btn-delete {
+    background: var(--red);
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background: var(--red-dark);
+}
+
+/* [AULA 2] O vermelho do YouTube, para reconhecer na hora. */
+.btn-youtube {
+    background: #ff0000;
+    color: #fff;
+}
+
+.btn-youtube:hover {
+    background: #cc0000;
+}
+
+/* 8. TIPOGRAFIA [h2 na AULA 2] */
+/* Todo h2 do sistema: grande, cor principal e uma linha embaixo. */
+h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+}
+
+/* 9. CABEÇALHO DE PÁGINA COM AÇÕES [AULA 2] */
+/* Usado na Biblioteca e nos dois cadastros.
+space-between: título na esquerda, botões na direita.
+flex-wrap: se faltar espaço, os botões descem. */
+.page-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+}
+
+/* A barra já tem linha embaixo. Tiramos a linha do h2 que está dentro dela, senão ficariam duas. */
+.page-header-bar h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.page-header-bar .header-actions {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 11. TABELAS [AULA 2] */
+/* A caixa da tabela. overflow: hidden corta o que passa dos cantos redondos (senão o cabeçalho escuro "vaza" no canto). */
+.table-container {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+/* border-collapse: as bordas das células viram uma só. */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Espaço dentro das células e uma linha fina entre as linhas. */
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Cabeçalho escuro, letra branca e MAIÚSCULA. */
+th {
+    background: var(--primary);
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* A última linha fica sem borda */
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* A linha clareia com o mouse */
+
+/* Larguras fixas das colunas pequenas. */
+.col-foto,
+.col-capa {
+    width: 90px;
+    white-space: nowrap;
+}
+
+.col-youtube {
+    width: 110px;
+    white-space: nowrap;
+}
+
+.col-acoes {
+    white-space: nowrap;
+}
+
+/* Editar, Excluir (e Músicas) lado a lado. */
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* [Sprint 2] A miniatura da capa ou da foto de verdade. */
+.table-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+/* O quadrado "Sem capa / Sem foto": borda tracejada e texto no meio. */
+.no-image {
+    width: 60px;
+    height: 60px;
+    background: var(--bg);
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* [Sprint 2] Célula de "nenhuma música encontrada". */
+td.empty-cell {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem;
+    font-size: .95rem;
+}
+
+/* 14. FILTROS [AULA 2] */
+.filters {
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+/* Os filtros lado a lado. flex-wrap: descem se não couber. */
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+/* flex: 1 faz cada filtro pegar a mesma fatia do espaço. min-width impede que fique fino demais. */
+.filter-item {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-item label {
+    font-size: .82rem;
+}
+
+.filter-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
