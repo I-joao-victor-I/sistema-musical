@@ -534,3 +534,81 @@ td.empty-cell {
     gap: .75rem;
     align-items: center;
 }
+/* [AULA 3] Verde - ir para as músicas do artista. */
+.btn-music { 
+    background: var(--green); 
+    color: #fff; 
+}
+.btn-music:hover { 
+    background: #219a52; 
+}
+
+/* [AULA 3] O subtítulo das tabelas dos cadastros. */
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 2rem 0 1rem; /* 2rem em cima, 0 nos lados, 1rem embaixo */
+}
+
+/* [AULA 3] Seletor de atributo: só o input de arquivo.
+A borda tracejada lembra "solte o arquivo aqui". */
+input[type="file"] {
+    width: 100%;
+    padding: .5rem;
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    font-size: .9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* [AULA 3] O texto de ajuda fica embaixo do campo, pequeno e cinza. */
+small {
+    display: block;
+    margin-top: .3rem;
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+
+/* [AULA 3] 2 colunas iguais (1fr = uma fração do espaço).
+gap: 0 entre linhas (o form-group já tem margem) e 2rem entre colunas. */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+
+/* [AULA 3] Os botões abaixo do formulário, lado a lado. */
+.form-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+    grid-column: 1 / -1;
+}
+
+/* [AULA 3, usada na Sprint 2] Mostra a foto já salva ao editar. */
+.current-image {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .75rem;
+    padding: .75rem;
+    background: var(--bg);
+    border-radius: 6px;
+}
+
+.current-image img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover; /* corta a foto sem esticar */
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.current-image small {
+    margin: 0;
+    color: var(--text-muted);
+}
