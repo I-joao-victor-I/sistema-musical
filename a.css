@@ -1,0 +1,1130 @@
+/* ==========================================================================
+   SISTEMA MUSICAL: Folha de Estilos Principal
+   Um único arquivo para TODAS as telas. Ele cresce a cada aula:
+   Aula 1: base, formulário, botões, login e menu
+   Aula 2: títulos, barra de título, cores dos botões, tabelas e filtros
+   Aula 3: formulário em grade, campo de foto e botão de músicas
+   Aula 4: url e textarea, campo "full", utilitários e celular
+   ========================================================================== */
+
+/* 1. VARIÁVEIS E RESET [AULA 1]
+   :root guarda as variáveis. Escrevemos o valor UMA vez e usamos
+   em todo lugar com var(--nome). Para mudar a identidade visual do
+   sistema, basta trocar as cores aqui. */
+:root {
+    --primary: #486f96;
+    /* azul bem escuro: títulos, cabeçalho da tabela */
+    --blue: #3498db;
+    /* azul: botão principal e editar */
+    --light-blue: #2896df;
+    /* azul escuro: hover */
+    --green: #27ae60;
+    /* verde: botão de músicas */
+    --red: #e74c3c;
+    /* vermelho: excluir e o de obrigatório */
+    --red-dark: #c0392b;
+    --bg: #171a1d;
+    /* fundo cinza claro da página */
+    --surface: #141313;
+    /* fundo dos cartões */
+    --border: #000000;
+    /* cor das bordas */
+    --text: #74afeb;
+    --text-muted: #9d9ea0;
+    /* texto cinza, menos importante */
+    --shadow-sm: 0 1px 3px rgba(233, 230, 230, 0.905);
+    /* sombra fraca */
+    --shadow-md: 0 4px 12px rgb(255, 251, 251);
+    /* sombra média */
+    --radius: 8px;
+    /* arredondamento dos cantos */
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset: zera as margens que o navegador coloca sozinho.
+   box-sizing: border-box faz a largura já incluir padding e borda. */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* A página inteira: fonte, fundo e cor do texto. */
+body {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    /* espaço entre as linhas do texto */
+    min-height: 100vh;
+    /* no mínimo a altura toda da tela */
+}
+
+/* 2. FORMULÁRIOS [AULA 1]
+   Base usada por TODAS as telas que têm <form>.
+   Todo formulário vira um cartão branco com sombra. */
+form {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+/* Espaço embaixo de cada grupo (rótulo + campo). */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* display: block coloca o rótulo numa linha só dele, em cima do campo. */
+label {
+    display: block;
+    margin-bottom: .4rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+/* Os campos ocupam a largura toda e ganham borda fina.
+   textarea e select já ficam prontos para as próximas telas. */
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--font);
+    /* sem isso, campos usam outra fonte */
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .25s, box-shadow .25s;
+    /* muda suave */
+}
+
+/* focus: quando a pessoa clica no campo. A borda fica azul. */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
+}
+
+/* 3. BOTÕES [AULA 1, cores novas nas aulas 2 e 3] */
+/* Seletor em grupo (vírgulas): TODOS os botões do sistema têm o
+   mesmo formato. Cada um ganha a sua cor mais abaixo. */
+.btn-primary,
+.btn-edit,
+.btn-delete,
+.btn-music,
+.btn-back,
+.btn-youtube {
+    display: inline-flex;
+    /* ícone e texto alinhados */
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    padding: .55rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: .875rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    /* mãozinha no mouse */
+    text-decoration: none;
+    /* links sem sublinhado */
+    white-space: nowrap;
+    /* texto não quebra linha */
+    transition: background-color .2s, transform .15s, box-shadow .2s;
+    line-height: 1.4;
+}
+
+/* Botão principal: azul. No hover escurece e sobe 1px. */
+.btn-primary {
+    padding: .65rem 1.4rem;
+    font-size: .95rem;
+    background: var(--blue);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Voltar e Sair: escuro. */
+.btn-back {
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-back:hover {
+    background: #1a252f;
+}
+
+/* 5. TELA DE LOGIN [AULA 1]
+   O body do login vira flex para centralizar o cartão:
+   justify-content: horizontal, align-items: vertical. */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg);
+    padding: 1rem;
+}
+
+/* O cartão branco, com no máximo 400px de largura. */
+.login-card {
+    background: var(--surface);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* O form já é um cartão (seção 2). Dentro do login-card tiramos
+   o fundo e a sombra para não ficar "caixa dentro de caixa". */
+.login-card form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.login-header h1 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: .25rem;
+}
+
+.login-header p {
+    color: var(--text-muted);
+    font-size: .9rem;
+}
+
+/* Seletor com espaço "que está dentro de". Só o botão do login ocupa a largura toda. */
+.login-card .btn-primary {
+    width: 100%;
+    margin-top: .25rem;
+}
+
+/* A caixinha com a dica das credenciais. */
+.login-hint {
+    margin-top: 1.25rem;
+    padding: .75rem 1rem;
+    background: var(--bg);
+    border-radius: 6px;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.login-hint code {
+    background: #e9ecef;
+    padding: .1rem .35rem;
+    border-radius: 3px;
+    font-size: .8rem;
+}
+
+/* 6. LAYOUT BASE [AULA 1]
+   O container de todas as telas, menos o login.
+   Largura máxima de 1200px. margin: 0 auto centraliza a caixa. */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+/* 7. MENU PRINCIPAL [AULA 1] */
+/* flex-end empurra o botão Sair para a direita. */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: .35rem;
+}
+
+.page-header p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+/* A grade dos cards. auto-fit: "coloque quantas colunas couberem, cada uma com no mínimo 240px".
+   No celular os cards descem sozinhos. */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.menu-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    transition: transform .2s, box-shadow .25s;
+    border: 1px solid var(--border);
+}
+
+/* Com o mouse em cima, o card sobe 4px e a sombra cresce. */
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .13);
+}
+
+/* display: block faz o link ocupar o card inteiro (tudo clicável). */
+.menu-card a {
+    display: block;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.menu-card-icon {
+    font-size: 2.2rem;
+    margin-bottom: .75rem;
+}
+
+.menu-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: .35rem;
+}
+
+.menu-card-desc {
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+
+/* [AULA 2] Cores dos botões de ação da tabela.
+Azul = ação normal. Vermelho = perigo (excluir). */
+.btn-edit {
+    background: var(--blue);
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background: var(--blue-dark);
+}
+
+.btn-delete {
+    background: var(--red);
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background: var(--red-dark);
+}
+
+/* [AULA 2] O vermelho do YouTube, para reconhecer na hora. */
+.btn-youtube {
+    background: #ff0000;
+    color: #fff;
+}
+
+.btn-youtube:hover {
+    background: #cc0000;
+}
+
+/* 8. TIPOGRAFIA [h2 na AULA 2] */
+/* Todo h2 do sistema: grande, cor principal e uma linha embaixo. */
+h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+}
+
+/* 9. CABEÇALHO DE PÁGINA COM AÇÕES [AULA 2] */
+/* Usado na Biblioteca e nos dois cadastros.
+space-between: título na esquerda, botões na direita.
+flex-wrap: se faltar espaço, os botões descem. */
+.page-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+}
+
+/* A barra já tem linha embaixo. Tiramos a linha do h2 que está dentro dela, senão ficariam duas. */
+.page-header-bar h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.page-header-bar .header-actions {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 11. TABELAS [AULA 2] */
+/* A caixa da tabela. overflow: hidden corta o que passa dos cantos redondos (senão o cabeçalho escuro "vaza" no canto). */
+.table-container {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+/* border-collapse: as bordas das células viram uma só. */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Espaço dentro das células e uma linha fina entre as linhas. */
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Cabeçalho escuro, letra branca e MAIÚSCULA. */
+th {
+    background: var(--primary);
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* A última linha fica sem borda */
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* A linha clareia com o mouse */
+
+/* Larguras fixas das colunas pequenas. */
+.col-foto,
+.col-capa {
+    width: 90px;
+    white-space: nowrap;
+}
+
+.col-youtube {
+    width: 110px;
+    white-space: nowrap;
+}
+
+.col-acoes {
+    white-space: nowrap;
+}
+
+/* Editar, Excluir (e Músicas) lado a lado. */
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* [Sprint 2] A miniatura da capa ou da foto de verdade. */
+.table-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+/* O quadrado "Sem capa / Sem foto": borda tracejada e texto no meio. */
+.no-image {
+    width: 60px;
+    height: 60px;
+    background: var(--bg);
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* [Sprint 2] Célula de "nenhuma música encontrada". */
+td.empty-cell {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem;
+    font-size: .95rem;
+}
+
+/* 14. FILTROS [AULA 2] */
+.filters {
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+/* Os filtros lado a lado. flex-wrap: descem se não couber. */
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+/* flex: 1 faz cada filtro pegar a mesma fatia do espaço. min-width impede que fique fino demais. */
+.filter-item {
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-item label {
+    font-size: .82rem;
+}
+
+.filter-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
+/* [AULA 3] Verde - ir para as músicas do artista. */
+.btn-music { 
+    background: var(--green); 
+    color: #fff; 
+}
+.btn-music:hover { 
+    background: #219a52; 
+}
+
+/* [AULA 3] O subtítulo das tabelas dos cadastros. */
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 2rem 0 1rem; /* 2rem em cima, 0 nos lados, 1rem embaixo */
+}
+
+/* [AULA 3] Seletor de atributo: só o input de arquivo.
+A borda tracejada lembra "solte o arquivo aqui". */
+input[type="file"] {
+    width: 100%;
+    padding: .5rem;
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    font-size: .9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* [AULA 3] O texto de ajuda fica embaixo do campo, pequeno e cinza. */
+small {
+    display: block;
+    margin-top: .3rem;
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+
+/* [AULA 3] 2 colunas iguais (1fr = uma fração do espaço).
+gap: 0 entre linhas (o form-group já tem margem) e 2rem entre colunas. */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+
+/* [AULA 3] Os botões abaixo do formulário, lado a lado. */
+.form-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+    grid-column: 1 / -1;
+}
+
+/* [AULA 3, usada na Sprint 2] Mostra a foto já salva ao editar. */
+.current-image {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .75rem;
+    padding: .75rem;
+    background: var(--bg);
+    border-radius: 6px;
+}
+
+.current-image img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover; /* corta a foto sem esticar */
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.current-image small {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+/* SISTEMA MUSICAL: Folha de Estilos Principal */
+
+/*
+Um único arquivo para TODAS as telas. Ele cresce a cada aula:
+Aula 1: base, formulário, botões, login e menu
+Aula 2: títulos, barra de título, cores dos botões, tabelas e filtros
+Aula 3: formulário em grade, campo de foto e botão de músicas
+Aula 4: url e textarea, campo "full", utilitários e celular
+*/
+
+/* 1. VARIÁVEIS E RESET [AULA 1] */
+:root {
+    --primary: #2c3e50;    /* azul bem escuro: títulos, cabeçalho da tabela */
+    --blue: #3498db;       /* azul: botão principal e editar */
+    --blue-dark: #2980b9;  /* azul escuro: hover */
+    --green: #27ae60;      /* verde: botão de músicas */
+    --red: #e74c3c;        /* vermelho: excluir e o de obrigatório */
+    --red-dark: #c0392b;
+    --bg: #f0f2f5;         /* fundo cinza claro da página */
+    --surface: #ffffff;    /* fundo dos cartões */
+    --border: #dde1e7;     /* cor das bordas */
+    --text: #2c3e50;
+    --text-muted: #6c757d; /* texto cinza, menos importante */
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.08); /* sombra fraca */
+    --shadow-md: 0 4px 12px rgba(0,0,0,.10); /* sombra média */
+    --radius: 8px;         /* arredondamento dos cantos */
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset: zera as margens que o navegador coloca sozinho. */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* A página inteira: fonte, fundo e cor do texto. */
+body {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* 2. FORMULÁRIOS [AULA 1] */
+form {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    margin-bottom: .4rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(52,152,219,.15);
+}
+
+/* 3. BOTÕES [AULA 1, cores novas nas aulas 2 e 3] */
+.btn-primary,
+.btn-edit,
+.btn-delete,
+.btn-music,
+.btn-back,
+.btn-youtube {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    padding: .55rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: .875rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color .2s, transform .15s, box-shadow .2s;
+    line-height: 1.4;
+}
+
+.btn-primary {
+    padding: .65rem 1.4rem;
+    font-size: .95rem;
+    background: var(--blue);
+    color: #fff;
+}
+.btn-primary:hover { 
+    background: var(--blue-dark); 
+    transform: translateY(-1px); 
+    box-shadow: var(--shadow-sm); 
+}
+
+.btn-back { background: var(--primary); color: #fff; }
+.btn-back:hover { background: #1a252f; }
+
+/* Cores de ações (Tabela) */
+.btn-edit { background: var(--blue); color: #fff; }
+.btn-edit:hover { background: var(--blue-dark); }
+.btn-delete { background: var(--red); color: #fff; }
+.btn-delete:hover { background: var(--red-dark); }
+.btn-music { background: var(--green); color: #fff; }
+.btn-music:hover { background: #219a52; }
+.btn-youtube { background: #ff0000; color: #fff; }
+.btn-youtube:hover { background: #cc0000; }
+
+/* 4. MENSAGENS [AULA 4] */
+.message {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    font-size: .95rem;
+    font-weight: 500;
+}
+.message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+/* Caixa da letra */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* 5. TELA DE LOGIN [AULA 1] */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg);
+    padding: 1rem;
+}
+
+.login-card {
+    background: var(--surface);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+.login-header h1 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: .25rem;
+}
+.login-header p {
+    color: var(--text-muted);
+    font-size: .9rem;
+}
+.login-card .btn-primary {
+    width: 100%;
+    margin-top: .25rem;
+}
+.login-hint {
+    margin-top: 1.25rem;
+    padding: .75rem 1rem;
+    background: var(--bg);
+    border-radius: 6px;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+.login-hint code {
+    background: #e9ecef;
+    padding: .1rem .35rem;
+    border-radius: 3px;
+    font-size: .8rem;
+}
+
+/* 6. LAYOUT BASE [AULA 1] */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+/* 7. MENU PRINCIPAL [AULA 1] */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.page-header h1 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: .35rem;
+}
+.page-header p { color: var(--text-muted); font-size: 1rem; }
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.menu-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    transition: transform .2s, box-shadow .2s;
+    border: 1px solid var(--border);
+}
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.13);
+}
+.menu-card a {
+    display: block;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+}
+.menu-card-icon { font-size: 2.2rem; margin-bottom: .75rem; }
+.menu-card-title { font-size: 1.05rem; font-weight: 600; color: var(--primary); margin-bottom: .35rem; }
+.menu-card-desc { font-size: .85rem; color: var(--text-muted); }
+
+/* 8. TIPOGRAFIA [AULA 2] */
+h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+}
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 2rem 0 1rem;
+}
+
+/* 9. CABEÇALHO DE PÁGINA COM AÇÕES [AULA 2] */
+.page-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--border);
+    flex-wrap: wrap;
+}
+.page-header-bar h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+.page-header-bar .header-actions {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 10. FORMULÁRIO EM GRADE [AULAS 3 e 4] */
+input[type="number"],
+input[type="url"],
+input[type="date"] {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--font);
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: .5rem;
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    font-size: .9rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+small {
+    display: block;
+    margin-top: .3rem;
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+.form-grid .form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+    grid-column: 1 / -1;
+}
+
+.current-image {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .75rem;
+    padding: .75rem;
+    background: var(--bg);
+    border-radius: 6px;
+}
+.current-image img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+.current-image small {
+    margin: 0;
+    color: var(--text-muted);
+}
+
+/* 11. TABELAS [AULA 2] */
+.table-container {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border);
+}
+th {
+    background: var(--primary);
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #f8fafc; }
+
+.col-foto, .col-capa { width: 90px; white-space: nowrap; }
+.col-youtube { width: 110px; white-space: nowrap; }
+.col-acoes { white-space: nowrap; }
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.table-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+.no-image {
+    width: 60px;
+    height: 60px;
+    background: var(--bg);
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.2;
+}
+td.empty-cell {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem;
+    font-size: .95rem;
+}
+
+/* 14. FILTROS [AULA 2] */
+.filters {
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.filter-item {
+    flex: 1;
+    min-width: 180px;
+}
+.filter-item label {
+    font-size: .82rem;
+}
+.filter-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
+
+/* 15. UTILITÁRIOS [AULA 4] */
+.text-center { text-align: center; }
+.text-muted { color: var(--text-muted); font-size: .9rem; }
+.mt-1 { margin-top: .5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: .5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* 16. RESPONSIVIDADE [AULA 4] */
+@media (max-width: 768px) {
+    .container { padding: 16px; }
+    h2 { font-size: 1.4rem; }
+    form { padding: 1.25rem; }
+    
+    .form-grid { grid-template-columns: 1fr; }
+    .filter-group { flex-direction: column; gap: .75rem; }
+    .filter-item { min-width: 100%; }
+    
+    .table-container { overflow-x: auto; }
+    table { min-width: 560px; }
+    th, td { padding: 10px 12px; font-size: .85rem; }
+    
+    .table-thumbnail, .no-image { width: 48px; height: 48px; }
+    .col-foto, .col-capa { width: 68px; }
+    
+    .action-buttons { flex-wrap: wrap; gap: 4px; }
+    .btn-edit, .btn-delete, .btn-music, .btn-youtube {
+        padding: .4rem .7rem;
+        font-size: .78rem;
+    }
+    
+    .menu-grid { grid-template-columns: 1fr; }
+}

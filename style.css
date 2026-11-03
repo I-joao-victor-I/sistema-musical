@@ -12,33 +12,33 @@
    em todo lugar com var(--nome). Para mudar a identidade visual do
    sistema, basta trocar as cores aqui. */
 :root {
-    --primary: #2c3e50;
+    --brand: #486f96;
     /* azul bem escuro: títulos, cabeçalho da tabela */
-    --blue: #3498db;
+    --accent: #3498db;
     /* azul: botão principal e editar */
-    --blue-dark: #2980b9;
+    --accent-light: #2896df;
     /* azul escuro: hover */
-    --green: #27ae60;
+    --success: #27ae60;
     /* verde: botão de músicas */
-    --red: #e74c3c;
+    --danger: #e74c3c;
     /* vermelho: excluir e o de obrigatório */
-    --red-dark: #c0392b;
-    --bg: #f0f2f5;
+    --danger-dark: #c0392b;
+    --background: #171a1d;
     /* fundo cinza claro da página */
-    --surface: #ffffff;
+    --card: #141313;
     /* fundo dos cartões */
-    --border: #dde1e7;
+    --line: #494949;
     /* cor das bordas */
-    --text: #2c3e50;
-    --text-muted: #6c757d;
+    --ink: #74afeb;
+    --ink-muted: #9d9ea0;
     /* texto cinza, menos importante */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, .08);
+    --elevation-sm: 0 1px 3px rgba(233, 230, 230, 0.601);
     /* sombra fraca */
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, .10);
+    --elevation-md: 0 4px 12px rgba(255, 251, 251, 0.533);
     /* sombra média */
-    --radius: 8px;
+    --corner: 8px;
     /* arredondamento dos cantos */
-    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --typeface: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 /* Reset: zera as margens que o navegador coloca sozinho.
@@ -53,9 +53,9 @@
 
 /* A página inteira: fonte, fundo e cor do texto. */
 body {
-    font-family: var(--font);
-    background-color: var(--bg);
-    color: var(--text);
+    font-family: var(--typeface);
+    background-color: var(--background);
+    color: var(--ink);
     line-height: 1.6;
     /* espaço entre as linhas do texto */
     min-height: 100vh;
@@ -66,10 +66,10 @@ body {
    Base usada por TODAS as telas que têm <form>.
    Todo formulário vira um cartão branco com sombra. */
 form {
-    background: var(--surface);
+    background: var(--card);
     padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
     margin-bottom: 2rem;
 }
 
@@ -84,7 +84,7 @@ label {
     margin-bottom: .4rem;
     font-size: .9rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--brand);
 }
 
 /* Os campos ocupam a largura toda e ganham borda fina.
@@ -95,13 +95,13 @@ textarea,
 select {
     width: 100%;
     padding: .65rem .85rem;
-    border: 1.5px solid var(--border);
+    border: 1.5px solid var(--line);
     border-radius: 6px;
     font-size: .95rem;
-    font-family: var(--font);
+    font-family: var(--typeface);
     /* sem isso, campos usam outra fonte */
-    color: var(--text);
-    background: var(--surface);
+    color: var(--ink);
+    background: var(--card);
     transition: border-color .25s, box-shadow .25s;
     /* muda suave */
 }
@@ -111,7 +111,7 @@ input:focus,
 textarea:focus,
 select:focus {
     outline: none;
-    border-color: var(--blue);
+    border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, .15);
 }
 
@@ -134,7 +134,7 @@ select:focus {
     border-radius: 6px;
     font-size: .875rem;
     font-weight: 600;
-    font-family: var(--font);
+    font-family: var(--typeface);
     cursor: pointer;
     /* mãozinha no mouse */
     text-decoration: none;
@@ -149,24 +149,24 @@ select:focus {
 .btn-primary {
     padding: .65rem 1.4rem;
     font-size: .95rem;
-    background: var(--blue);
+    background: var(--accent);
     color: #fff;
 }
 
 .btn-primary:hover {
-    background: var(--blue-dark);
+    background: var(--accent-dark);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--elevation-sm);
 }
 
 /* Voltar e Sair: escuro. */
 .btn-back {
-    background: var(--primary);
+    background: var(--brand);
     color: #fff;
 }
 
 .btn-back:hover {
-    background: #1a252f;
+    background: #3a5878;
 }
 
 /* 5. TELA DE LOGIN [AULA 1]
@@ -177,16 +177,16 @@ select:focus {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: var(--bg);
+    background: var(--background);
     padding: 1rem;
 }
 
 /* O cartão branco, com no máximo 400px de largura. */
 .login-card {
-    background: var(--surface);
+    background: var(--card);
     padding: 2.5rem 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
     width: 100%;
     max-width: 400px;
 }
@@ -207,12 +207,12 @@ select:focus {
 
 .login-header h1 {
     font-size: 1.6rem;
-    color: var(--primary);
+    color: var(--brand);
     margin-bottom: .25rem;
 }
 
 .login-header p {
-    color: var(--text-muted);
+    color: var(--ink-muted);
     font-size: .9rem;
 }
 
@@ -226,16 +226,16 @@ select:focus {
 .login-hint {
     margin-top: 1.25rem;
     padding: .75rem 1rem;
-    background: var(--bg);
+    background: var(--background);
     border-radius: 6px;
     text-align: center;
     font-size: .82rem;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
+    color: var(--ink-muted);
+    border: 1px solid var(--line);
 }
 
 .login-hint code {
-    background: #e9ecef;
+    background: #1b2430;
     padding: .1rem .35rem;
     border-radius: 3px;
     font-size: .8rem;
@@ -265,12 +265,12 @@ select:focus {
 
 .page-header h1 {
     font-size: 2rem;
-    color: var(--primary);
+    color: var(--brand);
     margin-bottom: .35rem;
 }
 
 .page-header p {
-    color: var(--text-muted);
+    color: var(--ink-muted);
     font-size: 1rem;
 }
 
@@ -285,17 +285,17 @@ select:focus {
 }
 
 .menu-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    background: var(--card);
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
     transition: transform .2s, box-shadow .25s;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
 }
 
 /* Com o mouse em cima, o card sobe 4px e a sombra cresce. */
 .menu-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, .13);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, .25);
 }
 
 /* display: block faz o link ocupar o card inteiro (tudo clicável). */
@@ -304,7 +304,7 @@ select:focus {
     padding: 2rem 1.5rem;
     text-align: center;
     text-decoration: none;
-    color: var(--text);
+    color: var(--ink);
 }
 
 .menu-card-icon {
@@ -315,33 +315,33 @@ select:focus {
 .menu-card-title {
     font-size: 1.05rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--brand);
     margin-bottom: .35rem;
 }
 
 .menu-card-desc {
     font-size: .85rem;
-    color: var(--text-muted);
+    color: var(--ink-muted);
 }
 
 /* [AULA 2] Cores dos botões de ação da tabela.
 Azul = ação normal. Vermelho = perigo (excluir). */
 .btn-edit {
-    background: var(--blue);
+    background: var(--accent);
     color: #fff;
 }
 
 .btn-edit:hover {
-    background: var(--blue-dark);
+    background: var(--accent-dark);
 }
 
 .btn-delete {
-    background: var(--red);
+    background: var(--danger);
     color: #fff;
 }
 
 .btn-delete:hover {
-    background: var(--red-dark);
+    background: var(--danger-dark);
 }
 
 /* [AULA 2] O vermelho do YouTube, para reconhecer na hora. */
@@ -359,10 +359,10 @@ Azul = ação normal. Vermelho = perigo (excluir). */
 h2 {
     font-size: 1.75rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--brand);
     margin-bottom: 1.5rem;
     padding-bottom: .75rem;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--line);
 }
 
 /* 9. CABEÇALHO DE PÁGINA COM AÇÕES [AULA 2] */
@@ -376,7 +376,7 @@ flex-wrap: se faltar espaço, os botões descem. */
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding-bottom: .75rem;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--line);
     flex-wrap: wrap;
 }
 
@@ -387,7 +387,7 @@ flex-wrap: se faltar espaço, os botões descem. */
     border: none;
     font-size: 1.75rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--brand);
 }
 
 .page-header-bar .header-actions {
@@ -400,9 +400,9 @@ flex-wrap: se faltar espaço, os botões descem. */
 /* 11. TABELAS [AULA 2] */
 /* A caixa da tabela. overflow: hidden corta o que passa dos cantos redondos (senão o cabeçalho escuro "vaza" no canto). */
 .table-container {
-    background: var(--surface);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
+    background: var(--card);
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
     overflow: hidden;
     margin-bottom: 1.5rem;
 }
@@ -419,12 +419,12 @@ td {
     padding: 12px 16px;
     text-align: left;
     vertical-align: middle;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
 }
 
 /* Cabeçalho escuro, letra branca e MAIÚSCULA. */
 th {
-    background: var(--primary);
+    background: var(--brand);
     color: #fff;
     font-size: .82rem;
     font-weight: 600;
@@ -439,7 +439,7 @@ tbody tr:last-child td {
 
 /* A última linha fica sem borda */
 tbody tr:hover {
-    background: #f8fafc;
+    background: #0357ff;
 }
 
 /* A linha clareia com o mouse */
@@ -481,14 +481,14 @@ tbody tr:hover {
 .no-image {
     width: 60px;
     height: 60px;
-    background: var(--bg);
-    border: 1.5px dashed var(--border);
+    background: var(--background);
+    border: 1.5px dashed var(--line);
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: .7rem;
-    color: var(--text-muted);
+    color: var(--ink-muted);
     text-align: center;
     line-height: 1.2;
 }
@@ -496,19 +496,19 @@ tbody tr:hover {
 /* [Sprint 2] Célula de "nenhuma música encontrada". */
 td.empty-cell {
     text-align: center;
-    color: var(--text-muted);
+    color: var(--ink-muted);
     padding: 2rem;
     font-size: .95rem;
 }
 
 /* 14. FILTROS [AULA 2] */
 .filters {
-    background: var(--surface);
+    background: var(--card);
     padding: 1.25rem 1.5rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-sm);
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-sm);
     margin-bottom: 1.5rem;
-    border: 1px solid var(--border);
+    border: 1px solid var(--line);
 }
 
 /* Os filtros lado a lado. flex-wrap: descem se não couber. */
@@ -536,7 +536,7 @@ td.empty-cell {
 }
 /* [AULA 3] Verde - ir para as músicas do artista. */
 .btn-music { 
-    background: var(--green); 
+    background: var(--success); 
     color: #fff; 
 }
 .btn-music:hover { 
@@ -547,7 +547,7 @@ td.empty-cell {
 h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--brand);
     margin: 2rem 0 1rem; /* 2rem em cima, 0 nos lados, 1rem embaixo */
 }
 
@@ -556,10 +556,10 @@ A borda tracejada lembra "solte o arquivo aqui". */
 input[type="file"] {
     width: 100%;
     padding: .5rem;
-    border: 1.5px dashed var(--border);
+    border: 1.5px dashed var(--line);
     border-radius: 6px;
     font-size: .9rem;
-    color: var(--text-muted);
+    color: var(--ink-muted);
     cursor: pointer;
 }
 
@@ -568,7 +568,7 @@ small {
     display: block;
     margin-top: .3rem;
     font-size: .8rem;
-    color: var(--text-muted);
+    color: var(--ink-muted);
 }
 
 /* [AULA 3] 2 colunas iguais (1fr = uma fração do espaço).
@@ -596,7 +596,7 @@ gap: 0 entre linhas (o form-group já tem margem) e 2rem entre colunas. */
     gap: .75rem;
     margin-top: .75rem;
     padding: .75rem;
-    background: var(--bg);
+    background: var(--background);
     border-radius: 6px;
 }
 
@@ -610,5 +610,521 @@ gap: 0 entre linhas (o form-group já tem margem) e 2rem entre colunas. */
 
 .current-image small {
     margin: 0;
-    color: var(--text-muted);
+    color: var(--ink-muted);
+}
+
+/* SISTEMA MUSICAL: Folha de Estilos Principal */
+
+/*
+Um único arquivo para TODAS as telas. Ele cresce a cada aula:
+Aula 1: base, formulário, botões, login e menu
+Aula 2: títulos, barra de título, cores dos botões, tabelas e filtros
+Aula 3: formulário em grade, campo de foto e botão de músicas
+Aula 4: url e textarea, campo "full", utilitários e celular
+*/
+
+/* 1. VARIÁVEIS E RESET [AULA 1] */
+:root {
+    --brand: #486f96;    /* azul bem escuro: títulos, cabeçalho da tabela */
+    --accent: #3498db;       /* azul: botão principal e editar */
+    --accent-dark: #2980b9;  /* azul escuro: hover */
+    --success: #27ae60;      /* verde: botão de músicas */
+    --danger: #e74c3c;        /* vermelho: excluir e o de obrigatório */
+    --danger-dark: #c0392b;
+    --background: #171a1d;         /* fundo cinza claro da página */
+    --card: #141313;    /* fundo dos cartões */
+    --line: #000000;     /* cor das bordas */
+    --ink: #74afeb;
+    --ink-muted: #9d9ea0; /* texto cinza, menos importante */
+    --elevation-sm: 0 1px 3px rgba(233, 230, 230, 0.905); /* sombra fraca */
+    --elevation-md: 0 4px 12px rgb(255, 251, 251); /* sombra média */
+    --corner: 8px;         /* arredondamento dos cantos */
+    --typeface: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Reset: zera as margens que o navegador coloca sozinho. */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* A página inteira: fonte, fundo e cor do texto. */
+body {
+    font-family: var(--typeface);
+    background-color: var(--background);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* 2. FORMULÁRIOS [AULA 1] */
+form {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    margin-bottom: .4rem;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--brand);
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--typeface);
+    color: var(--ink);
+    background: var(--card);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(52,152,219,.15);
+}
+
+/* 3. BOTÕES [AULA 1, cores novas nas aulas 2 e 3] */
+.btn-primary,
+.btn-edit,
+.btn-delete,
+.btn-music,
+.btn-back,
+.btn-youtube {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    padding: .55rem 1.1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: .875rem;
+    font-weight: 600;
+    font-family: var(--typeface);
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color .2s, transform .15s, box-shadow .2s;
+    line-height: 1.4;
+}
+
+.btn-primary {
+    padding: .65rem 1.4rem;
+    font-size: .95rem;
+    background: var(--accent);
+    color: #fff;
+}
+.btn-primary:hover { 
+    background: var(--accent-dark); 
+    transform: translateY(-1px); 
+    box-shadow: var(--elevation-sm); 
+}
+
+.btn-back { background: var(--brand); color: #fff; }
+.btn-back:hover { background: #3a5878; }
+
+/* Cores de ações (Tabela) */
+.btn-edit { background: var(--accent); color: #fff; }
+.btn-edit:hover { background: var(--accent-dark); }
+.btn-delete { background: var(--danger); color: #fff; }
+.btn-delete:hover { background: var(--danger-dark); }
+.btn-music { background: var(--success); color: #fff; }
+.btn-music:hover { background: #219a52; }
+.btn-youtube { background: #ff0000; color: #fff; }
+.btn-youtube:hover { background: #cc0000; }
+
+/* 4. MENSAGENS [AULA 4] */
+.message {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .85rem 1.1rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    font-size: .95rem;
+    font-weight: 500;
+}
+.message.success { background: rgba(39, 174, 96, .12); color: #5fd38d; border: 1px solid rgba(39, 174, 96, .35); }
+.message.error { background: rgba(231, 76, 60, .12); color: #ff8a7d; border: 1px solid rgba(231, 76, 60, .35); }
+
+/* Caixa da letra */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* 5. TELA DE LOGIN [AULA 1] */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background);
+    padding: 1rem;
+}
+
+.login-card {
+    background: var(--card);
+    padding: 2.5rem 2rem;
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+.login-header h1 {
+    font-size: 1.6rem;
+    color: var(--brand);
+    margin-bottom: .25rem;
+}
+.login-header p {
+    color: var(--ink-muted);
+    font-size: .9rem;
+}
+.login-card .btn-primary {
+    width: 100%;
+    margin-top: .25rem;
+}
+.login-hint {
+    margin-top: 1.25rem;
+    padding: .75rem 1rem;
+    background: var(--background);
+    border-radius: 6px;
+    text-align: center;
+    font-size: .82rem;
+    color: var(--ink-muted);
+    border: 1px solid var(--line);
+}
+.login-hint code {
+    background: #1b2430;
+    padding: .1rem .35rem;
+    border-radius: 3px;
+    font-size: .8rem;
+}
+
+/* 6. LAYOUT BASE [AULA 1] */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 32px;
+}
+
+/* 7. MENU PRINCIPAL [AULA 1] */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
+}
+.page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.page-header h1 {
+    font-size: 2rem;
+    color: var(--brand);
+    margin-bottom: .35rem;
+}
+.page-header p { color: var(--ink-muted); font-size: 1rem; }
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.menu-card {
+    background: var(--card);
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
+    transition: transform .2s, box-shadow .2s;
+    border: 1px solid var(--line);
+}
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.559);
+}
+.menu-card a {
+    display: block;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--ink);
+}
+.menu-card-icon { font-size: 2.2rem; margin-bottom: .75rem; }
+.menu-card-title { font-size: 1.05rem; font-weight: 600; color: var(--brand); margin-bottom: .35rem; }
+.menu-card-desc { font-size: .85rem; color: var(--ink-muted); }
+
+/* 8. TIPOGRAFIA [AULA 2] */
+h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--brand);
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--line);
+}
+h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--brand);
+    margin: 2rem 0 1rem;
+}
+
+/* 9. CABEÇALHO DE PÁGINA COM AÇÕES [AULA 2] */
+.page-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: .75rem;
+    border-bottom: 2px solid var(--line);
+    flex-wrap: wrap;
+}
+.page-header-bar h2 {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--brand);
+}
+.page-header-bar .header-actions {
+    display: flex;
+    gap: .6rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* 10. FORMULÁRIO EM GRADE [AULAS 3 e 4] */
+input[type="number"],
+input[type="url"],
+input[type="date"] {
+    width: 100%;
+    padding: .65rem .85rem;
+    border: 1.5px solid var(--line);
+    border-radius: 6px;
+    font-size: .95rem;
+    font-family: var(--typeface);
+    color: var(--ink);
+    background: var(--card);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: .5rem;
+    border: 1.5px dashed var(--line);
+    border-radius: 6px;
+    font-size: .9rem;
+    color: var(--ink-muted);
+    cursor: pointer;
+}
+
+small {
+    display: block;
+    margin-top: .3rem;
+    font-size: .8rem;
+    color: var(--ink-muted);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+}
+.form-grid .form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: .5rem;
+    grid-column: 1 / -1;
+}
+
+.current-image {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .75rem;
+    padding: .75rem;
+    background: var(--background);
+    border-radius: 6px;
+}
+.current-image img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+.current-image small {
+    margin: 0;
+    color: var(--ink-muted);
+}
+
+/* 11. TABELAS [AULA 2] */
+.table-container {
+    background: var(--card);
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-md);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--line);
+}
+th {
+    background: var(--brand);
+    color: #fff;
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover { background: #161719; }
+
+.col-foto, .col-capa { width: 90px; white-space: nowrap; }
+.col-youtube { width: 110px; white-space: nowrap; }
+.col-acoes { white-space: nowrap; }
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.table-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+.no-image {
+    width: 60px;
+    height: 60px;
+    background: var(--background);
+    border: 1.5px dashed var(--line);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    color: var(--ink-muted);
+    text-align: center;
+    line-height: 1.2;
+}
+td.empty-cell {
+    text-align: center;
+    color: var(--ink-muted);
+    padding: 2rem;
+    font-size: .95rem;
+}
+
+/* 14. FILTROS [AULA 2] */
+.filters {
+    background: var(--card);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--corner);
+    box-shadow: var(--elevation-sm);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--line);
+}
+.filter-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.filter-item {
+    flex: 1;
+    min-width: 180px;
+}
+.filter-item label {
+    font-size: .82rem;
+}
+.filter-actions {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+}
+
+/* 15. UTILITÁRIOS [AULA 4] */
+.text-center { text-align: center; }
+.text-muted { color: var(--ink-muted); font-size: .9rem; }
+.mt-1 { margin-top: .5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: .5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* 16. RESPONSIVIDADE [AULA 4] */
+@media (max-width: 768px) {
+    .container { padding: 16px; }
+    h2 { font-size: 1.4rem; }
+    form { padding: 1.25rem; }
+    
+    .form-grid { grid-template-columns: 1fr; }
+    .filter-group { flex-direction: column; gap: .75rem; }
+    .filter-item { min-width: 100%; }
+    
+    .table-container { overflow-x: auto; }
+    table { min-width: 560px; }
+    th, td { padding: 10px 12px; font-size: .85rem; }
+    
+    .table-thumbnail, .no-image { width: 48px; height: 48px; }
+    .col-foto, .col-capa { width: 68px; }
+    
+    .action-buttons { flex-wrap: wrap; gap: 4px; }
+    .btn-edit, .btn-delete, .btn-music, .btn-youtube {
+        padding: .4rem .7rem;
+        font-size: .78rem;
+    }
+    
+    .menu-grid { grid-template-columns: 1fr; }
 }
