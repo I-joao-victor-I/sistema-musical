@@ -1,44 +1,58 @@
+<?php
+/*
+ * =============================================
+ * ARQUIVO: index.php
+ * FUNÇÃO: Menu principal do sistema
+ * =============================================
+ *
+ * Primeira página após o login.
+ * valida_sessao.php garante que apenas usuários
+ * logados chegam até aqui.
+ */
+include('valida_sessao.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <!-- O head é igual ao do login: só muda o title. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Principal Sistema Musical</title>
+    <title>Menu Principal — Sistema Musical</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🎵</text></svg>">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
 
-    <!-- container: caixa com largura máxima, centralizada. Usada em todas as telas, menos no login. -->
+<body>
     <div class="container">
-        <!-- topbar: barra de cima. O CSS (flex-end) joga o botão Sair para a direita. -->
+
+        <!-- Botão de sair alinhado à direita -->
         <div class="topbar">
-            <!-- Um link (a) com cara de botão: a classe btn-back deixa ele escuro. -->
-            <!-- Na Sprint 2 este link vai para logout.php, que encerra a sessão. -->
-            <a href="login.html" class="btn-back">Sair</a>
+            <a href="logout.php" class="btn-back">🚪 Sair</a>
         </div>
 
-        <!-- page-header: as boas-vindas, centralizadas. -->
+        <!-- Cabeçalho de boas-vindas -->
         <div class="page-header">
             <h1>🎵 Sistema Musical</h1>
-            <!-- "admin" está fixo (dado inventado). Na Sprint 2 o PHP mostra o nome de quem entrou. -->
-            <p>Olá, <strong>admin</strong>! O que deseja fazer?</p>
+            <!--
+            $_SESSION['usuario'] contém o nome salvo no login.
+            htmlspecialchars() protege contra XSS na exibição.
+        -->
+            <p>Olá, <strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong>! O que deseja fazer?</p>
         </div>
 
-        <!-- menu-grid: a grade dos 3 cards. O CSS usa display: grid para colocá-los lado a lado. -->
+        <!-- Grade de cards do menu -->
         <div class="menu-grid">
-            <!-- Cada menu-card tem um link (a) que ocupa o card inteiro: clicar em qualquer parte leva à tela. -->
+
             <div class="menu-card">
-                <a href="cadastro_artista.html">
-                    <div class="menu-card-icon">👨‍🎤</div> <!-- ícone grande -->
-                    <div class="menu-card-title">Gerenciar Artistas</div> <!-- título -->
-                    <div class="menu-card-desc">Cadastre e edite artistas</div> <!-- descrição -->
+                <a href="cadastro_artista.php">
+                    <div class="menu-card-icon">🎤</div>
+                    <div class="menu-card-title">Gerenciar Artistas</div>
+                    <div class="menu-card-desc">Cadastre e edite artistas</div>
                 </a>
             </div>
 
             <div class="menu-card">
-                <a href="cadastro_musica.html">
+                <a href="cadastro_musica.php">
                     <div class="menu-card-icon">🎵</div>
                     <div class="menu-card-title">Cadastrar Músicas</div>
                     <div class="menu-card-desc">Adicione músicas ao sistema</div>
@@ -46,14 +60,16 @@
             </div>
 
             <div class="menu-card">
-                <a href="listagem_musicas.html">
-                    <div class="menu-card-icon">📚</div>
+                <a href="listagem_musicas.php">
+                    <div class="menu-card-icon">🎼</div>
                     <div class="menu-card-title">Biblioteca Musical</div>
                     <div class="menu-card-desc">Visualize e filtre todas as músicas</div>
                 </a>
             </div>
-        </div>
-    </div>
 
+        </div>
+
+    </div>
 </body>
+
 </html>
